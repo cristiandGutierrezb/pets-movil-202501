@@ -1,9 +1,13 @@
-import { View, Text } from 'react-native'
+import { useState } from 'react'
+import { View, Text, StyleSheet, Pressable, TextInput, ScrollView } from 'react-native'
 
 const Profile = () => {
+
+  const [name, setName] = useState('')
+
   return (
-    <View>
-      <Text>Profile</Text>
+    <View className='flex items-center justify-center h-full bg-slate-400'>
+      
     </View>
   )
 }
