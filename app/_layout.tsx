@@ -7,6 +7,9 @@ const HomeLayout = () => {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }}/>
       <Stack.Screen name="profile" options={{ headerShown: false }}/>
+      <Stack.Screen name="(auth)" options={{ headerShown: false }}/>
+      <Stack.Screen name="marketplace" options={{ headerShown: false }}/>
+      <Stack.Screen name="recomendations" options={{ headerShown: false }}/>
     </Stack>
   )
 }
