@@ -1,5 +1,7 @@
-import { View, Text, Pressable } from 'react-native'
 import { Link } from 'expo-router'
+import { View, Text } from 'react-native'
+
+import { bgRed } from '../components/Tokens'
 
 const Index = () => {
   return (
@@ -10,7 +12,7 @@ const Index = () => {
         </Text>
       </Link>
       <Link href='/marketplace'>
-        <Text className='rounded p-4 bg-slate-200 text-3xl'>
+        <Text className={`bg-secondary rounded p-4 text-3xl`}>
           Marketplace
         </Text>
       </Link>

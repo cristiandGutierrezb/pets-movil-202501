@@ -1,12 +1,8 @@
-import { View, Text } from 'react-native'
+import RegisterModule from '../../modules/auth/Register'
 import React from 'react'
 
 const RegisterPage = () => {
-  return (
-    <View>
-      <Text>Register Page</Text>
-    </View>
-  )
+  return <RegisterModule />
 }
 
 export default RegisterPage

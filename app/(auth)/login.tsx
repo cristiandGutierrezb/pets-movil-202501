@@ -1,12 +1,9 @@
 import { View, Text } from 'react-native'
+import LoginModule from '../../modules/auth/Login'
 import React from 'react'
 
 const LoginPage = () => {
-  return (
-    <View>
-      <Text>LoginPage</Text>
-    </View>
-  )
+  return <LoginModule />
 }
 
 export default LoginPage
