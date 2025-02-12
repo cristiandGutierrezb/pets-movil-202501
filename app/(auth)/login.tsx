@@ -1,9 +1,12 @@
-import { View, Text } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import LoginModule from '../../modules/auth/Login'
-import React from 'react'
 
 const LoginPage = () => {
-  return <LoginModule />
+  return (
+    <SafeAreaView>
+      <LoginModule />
+    </SafeAreaView>
+  )
 }
 
 export default LoginPage
