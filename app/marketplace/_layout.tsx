@@ -1,13 +1,32 @@
-import { View, Text } from 'react-native'
-import { StatusBar } from 'expo-status-bar'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
 
-const LayoutMarketplace = () => {
+export default function MarketplaceLayout() {
   return (
-    <View className='bg-slate-700 h-full'>
-      <StatusBar style='light' />
-      <Text>LayoutMarketplace</Text>
-    </View>
-  )
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer>
+        <Drawer.Screen
+          name="food"
+          options={{
+            drawerLabel: 'Comida',
+            title: 'Comida',
+          }}
+        />
+        <Drawer.Screen
+          name="games"
+          options={{
+            drawerLabel: 'Juguetes',
+            title: 'Juguetes',
+          }}
+        />
+        <Drawer.Screen
+          name="pharmacy"
+          options={{
+            drawerLabel: 'Farmacia',
+            title: 'Farmacia',
+          }}
+        />
+      </Drawer>
+    </GestureHandlerRootView>
+  );
 }
-
-export default LayoutMarketplace

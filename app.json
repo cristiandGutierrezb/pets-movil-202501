@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Mascotitas",
-    "slug": "Mascotitas",
+    "slug": "mascotas",
     "scheme": "mascotitas",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -27,6 +27,12 @@
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "6eff3568-bfab-43f5-bd4f-ff7f0a4a31ab"
+      }
+    },
+    "owner": "cdgutierrez456"
   }
 }

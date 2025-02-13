@@ -3,7 +3,7 @@ import LoginModule from '../../modules/auth/Login'
 
 const LoginPage = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView className='bg-slate-500 h-full'>
       <LoginModule />
     </SafeAreaView>
   )
