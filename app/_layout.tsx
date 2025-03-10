@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Stack } from "expo-router";
+import { Stack, Slot } from "expo-router";
 import NetInfo from '@react-native-community/netinfo'
 
 import "../global.css";
@@ -20,12 +20,12 @@ const HomeLayout = () => {
   }, [])
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }}/>
-      <Stack.Screen name="profile" options={{ headerShown: false }}/>
-      <Stack.Screen name="(auth)" options={{ headerShown: false }}/>
-      <Stack.Screen name="marketplace" options={{ headerShown: false }}/>
-      <Stack.Screen name="recomendations" options={{ headerShown: false }}/>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="profile" />
+      <Stack.Screen name="(auth)" />
+      <Stack.Screen name="marketplace" />
+      <Stack.Screen name="recomendations" />
     </Stack>
   )
 }

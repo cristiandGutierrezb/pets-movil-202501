@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { View, Text, TextInput, Pressable } from 'react-native'
 import { useRouter } from 'expo-router'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { StatusBar } from 'expo-status-bar'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -24,28 +26,31 @@ const LoginModule = () => {
   }
   
   return (
-    <View className='h-full flex flex-col p-10'>
+    <SafeAreaView className='h-full flex justify-center items-center bg-primary'>
+      <StatusBar style='light' />
       <View className='w-[90%]'>
-        <Text>Email</Text>
-        <TextInput 
-          className='p-4 rounded-lg my-5 bg-white'
-          placeholder='Email'
-          onChangeText={setEmail}
-        />
+        <View>
+          <Text className='text-secondary font-semibold text-2xl'>Email</Text>
+          <TextInput 
+            className='p-4 rounded-lg my-5 bg-white'
+            placeholder='Email'
+            onChangeText={setEmail}
+          />
+        </View>
+        <View>
+          <Text className='text-secondary font-semibold text-2xl'>Password</Text>
+          <TextInput
+            className='p-4 rounded-lg my-5 bg-white'
+            placeholder='Password'
+            onChangeText={setPassword}
+            secureTextEntry={true}
+          />
+        </View>
+        <Pressable onPress={onSendInfo}>
+          <Text className='p-5 rounded-lg bg-secondary font-bold text-primary text-2xl text-center'>Save</Text>
+        </Pressable>
       </View>
-      <View className='w-[90%]'>
-        <Text>Password</Text>
-        <TextInput
-          className='p-4 rounded-lg my-5 bg-white'
-          placeholder='Password'
-          onChangeText={setPassword}
-          secureTextEntry={true}
-        />
-      </View>
-      <Pressable onPress={onSendInfo}>
-        <Text className='p-5 rounded-lg bg-red-500'>Save</Text>
-      </Pressable>
-    </View>
+    </SafeAreaView>
   )
 }
 

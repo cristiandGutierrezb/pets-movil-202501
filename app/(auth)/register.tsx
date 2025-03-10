@@ -1,8 +1,12 @@
+import { SafeAreaView } from 'react-native'
 import RegisterModule from '../../modules/auth/Register'
-import React from 'react'
 
 const RegisterPage = () => {
-  return <RegisterModule />
+  return (
+    <SafeAreaView>
+      <RegisterModule />
+    </SafeAreaView>
+  )
 }
 
 export default RegisterPage
