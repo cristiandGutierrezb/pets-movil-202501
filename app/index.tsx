@@ -3,22 +3,25 @@ import { Link } from 'expo-router'
 import { View, Text, ScrollView, ActivityIndicator, FlatList } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useRouter } from 'expo-router';
 
 import SmallCard from '../components/molecules/SmallCard';
-import { LoginIcon, ShoppingCartIcon, InfoIcon } from '../components/atoms/Icons'
-
 import { standardButton } from '../components/Tokens'
-
-import { getProducts } from '../lib/api_products';
+import { LoginIcon, ShoppingCartIcon, InfoIcon } from '../components/atoms/Icons'
 
 import { GetProductsServiceDAO, ProductDAO } from '../interfaces/Marketplace';
 
+import { getProducts } from '../lib/api_products';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Index = () => {
+  const router = useRouter()
 
   const [isLoading, setIsLoading] = useState(true)
   const [products, setProducts] = useState<ProductDAO[]>([])
 
   useEffect(() => {
+    validateToken()
     setIsLoading(true)
     getProducts()
     .then((infoService: GetProductsServiceDAO) => {
@@ -27,6 +30,14 @@ const Index = () => {
     })
     .catch((e) => console.log(e))
   }, [])
+
+  const validateToken = async () => {
+    const infoUser = await AsyncStorage.getItem('@infologin')
+    const infoUserObj = JSON.parse(infoUser || '{}')
+    if (infoUser && Object.entries(infoUserObj).length) {
+      router.replace('/admin')
+    }
+  }
 
   return (
     <SafeAreaView className='bg-primary p-5'>
@@ -41,7 +52,7 @@ const Index = () => {
           ) : (
             <FlatList 
               data={products}
-              renderItem={({item}) => <SmallCard key={item.id_product} />} 
+              renderItem={({item}) => <SmallCard key={item.id_product} product={item} />} 
               keyExtractor={item => `${item.id_product}`}
             />
           )
@@ -52,7 +63,7 @@ const Index = () => {
           <Link href='/marketplace' className='flex-1'>
             <View className={`flex-col ${standardButton} w-full`}>
               <ShoppingCartIcon size={40} color='#000' />
-              <Text className='text-black text-2xl'>
+              <Text className='text-black text-xl'>
                 Marketplace
               </Text>
             </View>
@@ -60,8 +71,8 @@ const Index = () => {
           <Link href='/recomendations' className='flex-1'>
             <View className={`flex-col ${standardButton} w-full`}>
               <InfoIcon size={40} color='#000' />
-              <Text className='text-black text-2xl'>
-                Recomendations
+              <Text className='text-black text-xl'>
+                Recomendation
               </Text>
             </View>
           </Link>
@@ -69,7 +80,7 @@ const Index = () => {
         <Link href='/login' className='w-1/2'>
           <View className={`flex-col ${standardButton} w-full`}>
             <LoginIcon size={40} color='#000' />
-            <Text className='text-black text-2xl'>Auth</Text>
+            <Text className='text-black text-xl'>Auth</Text>
           </View>
         </Link>
       </View>

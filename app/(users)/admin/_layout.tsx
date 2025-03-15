@@ -1,16 +1,19 @@
+import { useEffect } from 'react'
 import { View, Text } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useEffect } from 'react'
+
+import { validateInfoUser } from '../../../lib/api_users'
 
 const AdminLayout = () => {
 
   const getInfoUser = async () => {
-    try {
-      const infoUser = await AsyncStorage.getItem('@infologin')
-      console.log('infoUser admin', infoUser);
-    } catch (error) {
-      console.log('Not working');
-    }
+    const infoUser = await AsyncStorage.getItem('@infologin')
+    const infoUserObj = JSON.parse(infoUser || '{}')
+
+    validateInfoUser(btoa(infoUserObj.email))
+    .then((data) => {
+      console.log('data layout', data);
+    })
   }
 
   useEffect(() => {

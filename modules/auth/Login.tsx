@@ -18,8 +18,7 @@ const LoginModule = () => {
         password
       }
       await AsyncStorage.setItem('@infologin', JSON.stringify(infoLogin))
-      router.navigate('/admin')
-      console.log('Info saved');
+      router.replace('/admin')
     } catch (e) {
      console.log('Error on save');
     }

@@ -2,10 +2,16 @@ import { View, Text, Image } from 'react-native'
 
 import { standardContainer } from '../Tokens'
 
-const SmallCard = () => {
+import { ProductDAO } from '../../interfaces/Marketplace'
+
+interface SmallCardProps {
+  product: ProductDAO
+}
+
+const SmallCard = ({ product }: SmallCardProps) => {
   return (
     <View className={`${standardContainer} flex justify-center items-center mb-5`}>
-      <Text className='text-white font-semibold text-2xl'>Title</Text>
+      <Text className='text-white font-semibold text-2xl'>{ product.title }</Text>
       <Image 
         source={{ uri: 'https://images.pexels.com/photos/7725961/pexels-photo-7725961.jpeg?auto=compress&cs=tinysrgb&w=200' }} 
         width={150}
@@ -13,11 +19,7 @@ const SmallCard = () => {
         className='rounded-lg'
       />
       <Text>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Suspendisse sed urna in justo euismod condimentum. 
-        Nullam nec lacinia nunc. 
-        Nullam nec lacinia nunc. 
-        Nullam nec lacinia nunc.
+        { product.description }
       </Text>
     </View>
   )
