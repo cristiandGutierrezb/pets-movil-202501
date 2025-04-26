@@ -1,15 +1,14 @@
-import { View, Text, Pressable } from 'react-native'
+import { Text, Pressable } from 'react-native'
 
 interface CustomButtonProps {
-  color: ''
   text: string
   actionFunction: () => void
 } 
 
-const CustomButton = ({ color, text, actionFunction }: CustomButtonProps) => {
+const CustomButton = ({ text, actionFunction }: CustomButtonProps) => {
   return (
-    <Pressable className=''>
-      <Text>CustomButton</Text>
+    <Pressable onPress={actionFunction} className=''>
+      <Text>{ text }</Text>
     </Pressable>
   )
 }
